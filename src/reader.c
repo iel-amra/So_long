@@ -56,12 +56,13 @@ char	**reader(char *path)
 	return (tab);
 }
 
-void	printer(unsigned char **tab)
+void	printer(char **tab)
 {
-	int	i;
+	//int	i;
 
 	while (*tab)
 	{
+		/*
 		i = 0;
 		while ((*tab)[i])
 		{
@@ -70,7 +71,8 @@ void	printer(unsigned char **tab)
 			i++;
 		}
 		write(1, "\n", 1);
-		//ft_putendl(*tab);
+		*/
+		ft_putendl(*tab);
 		tab++;
 	}
 }

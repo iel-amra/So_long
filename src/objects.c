@@ -1,11 +1,29 @@
-int	init_objects(t_assets *assets, t_object *objects, void *mlx)
+int	init_objects(t_assets *assets, t_object **objects, void *mlx)
 {
-	(void) assets;
-	(void) objects;
-	(void) mlx;
-
-	if (create_character(assets, objects, mlx)) // Envoie le pointeur du premier anime
+	*objects = malloc((1 + assets->nb_objects) * sizeof(**objects));
+	if (!*objects)
 		return (1);
+	(*objects)[assets->nb_objects].animes = (void *) 0;
+	if (create_character(assets, *objects, mlx)) // Envoie le pointeur du premier object
+	{
+		free(*objects);
+		return (1);
+	}
+	if (init_collectibles(assets->tab, *objects + 1, mlx))
+	{
+		free_object(*objects, NB_CHAR_ANIME, mlx);
+		free(*objects);
+		return (1);
+	}
+	if (init_enemies(assets->tab, *objects + assets->nb_coll + 1, mlx))
+	{
+		free_object(*objects, NB_CHAR_ANIME, mlx);
+		(*objects)[1 + assets->nb_coll].animes = (void *) 0;
+		free_objects(*objects, mlx);
+		free(*objects);
+		return (1);
+	}
+	reset_objects(*objects);
 	return (0);
 }
 
@@ -75,12 +93,10 @@ void	invert_frame(t_data *frame)
 	}
 }*/
 
-void	display_objects(t_object *objects, t_data *world, int *keys)
+void	display_objects(t_object *objects, t_data *world, int *keys, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < NB_OBJECTS)
+	i--;
+	while (i >= 0)
 	{
 		if (!objects[i].mirror)
 		{
@@ -94,6 +110,6 @@ void	display_objects(t_object *objects, t_data *world, int *keys)
 			if (keys[4])
 				put_inverted_tile(&objects[i].hit, world, objects[i].x, objects[i].y);
 		}
-		i++;
+		i--;
 	}
 }

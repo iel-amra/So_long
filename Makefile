@@ -5,18 +5,18 @@ HEADER_FILE = header
 SRC = $(wildcard ${SRC_FILE}/*.c)
 OBJ = $(SRC:${SRC_FILE}/%.c=${OBJ_FILE}/%.o)
 HEADER = $(wildcard ${HEADER_FILE}/*.h)
-LIBFT = libft/libft.a
+LIBFT = libft/libft.a 
 
 all : checkLibft ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT}
-	gcc ${OBJ} -LMiniLibX -lmlx -L/usr/lib -IMiniLibX -lXext -lX11 -lm -lz -o ${NAME} ${LIBFT}
+	gcc -Wall -Werror -Wextra -fsanitize=address ${OBJ}  ${LIBFT} -LMiniLibX -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 checkLibft :
 	make -C libft
 
 ${OBJ_FILE}/%.o : ${SRC_FILE}/%.c ${HEADER}
-	gcc -Wall -Werror -Wextra -I/usr/include -IMiniLibX -O3 -include "header/principal.h" -c $< -o $@
+	gcc -Wall -Werror -Wextra -fsanitize=address -I/usr/include -IMiniLibX -O3 -include "header/principal.h" -c $< -o $@
 
 clean :
 	rm -f ${OBJ}

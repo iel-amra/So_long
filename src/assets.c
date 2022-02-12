@@ -17,6 +17,9 @@ int	init_assets(t_assets *assets, void *mlx)
 	}
 	init_map(assets, mlx);
 	init_hit_map(assets, mlx);
+	assets->nb_coll = nb_collectibles(assets->tab);
+	assets->nb_enemies = place_enemies(assets->tab);
+	assets->nb_objects = 1 + assets->nb_coll + assets->nb_enemies;
 	return (0);
 }
 
@@ -103,9 +106,9 @@ void	put_inverted_tile(t_data *tile, t_data *img, int x, int y)
 		j = 0;
 		while (j < tile->y && j + y < img->y)
 		{
-			color = my_mlx_pixel_get(tile, tile->x - i, j);
+			color = my_mlx_pixel_get(tile, tile->x - i - 1, j);
 			if (color != 0xFF000000)
-			my_mlx_pixel_put(img, i + x, j + y, color);
+				my_mlx_pixel_put(img, i + x, j + y, color);
 			j++;
 		}
 		i++;

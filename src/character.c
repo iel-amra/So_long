@@ -15,35 +15,38 @@ int	create_character(t_assets *assets, t_object *chara, void *mlx)
 	chara->img = chara->animes[chara->current_anime].frames;
 	chara->img += chara->animes[chara->current_anime].current_frame;
 	chara->hit = new_image(mlx, chara->img->x, chara->img->y);
-	cutter = new_cutter(80, 80, 70, 100); // A preciser
+	cutter = new_cutter(80, 80, 70, 100);
 	paint_background(&chara->hit, 0xFF000000);
 	draw_empty_rectangle(&chara->hit, cutter, 0x000000FF);
-	get_first_pos(chara, assets->tab);
-	chara->move->speed_x = 0;
-	chara->move->speed_y = 0;
-	chara->move->old_x = chara->x;
-	chara->move->old_y = chara->y;
-	chara->move->x = chara->x;
-	chara->move->y = chara->y;
+	create_char_move(chara, assets->tab);
 	chara->mirror = 0;
 	return (0);
 }
 
-void	get_first_pos(t_object *chara, char **tab)
+void	create_char_move(t_object *chara, char **tab)
 {
-	chara->y = 0;
-	chara->x = 0;
+	get_first_pos(&chara->move->begin_x, &chara->move->begin_y, tab);
+	chara->move->begin_x = chara->move->begin_x * 128 - 50;
+	chara->move->begin_y = chara->move->begin_y * 128 - 50;
+	chara->move->old_x = chara->move->begin_x;
+	chara->move->old_y = chara->move->begin_y;
+	chara->move->begin_speed_x = 0;
+	chara->move->begin_speed_y = 0;
+}
 
-	while (tab[chara->y] && tab[chara->y][chara->x] != 'P')
+void	get_first_pos(int *x, int *y, char **tab)
+{
+	*y = 0;
+	*x = 0;
+
+	while (tab[*y] && tab[*y][*x] != 'P')
 	{
-		chara->x = 0;
-		while (tab[chara->y][chara->x] && tab[chara->y][chara->x] != 'P')
-			chara->x++;
-		if (tab[chara->y][chara->x] != 'P')
-		chara->y++;
+		*x = 0;
+		while (tab[*y][*x] && tab[*y][*x] != 'P')
+			(*x)++;
+		if (tab[*y][*x] != 'P')
+		(*y)++;
 	}
-	chara->y = chara->y * 128 - 50;
-	chara->x = chara->x * 128 - 50;
 }
 
 t_anime	*init_chara_animes(void *mlx)
@@ -84,7 +87,7 @@ int	init_char_one_anime(int i, t_anime *anime, void *mlx)
 	{
 		anime->frames = load_frames("img/BlueWizard/2BlueWizardWalk/Chara_BlueWalk", 
 				20, mlx);
-		anime->wait = 4;
+		anime->wait = 1;
 	}
 	if (!anime->frames)
 		return (1);
