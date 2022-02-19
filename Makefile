@@ -16,7 +16,7 @@ checkLibft :
 	make -C libft
 
 ${OBJ_FILE}/%.o : ${SRC_FILE}/%.c ${HEADER}
-	gcc -Wall -Werror -Wextra -fsanitize=address -I/usr/include -IMiniLibX -O3 -include "header/principal.h" -c $< -o $@
+	gcc -Wall -Werror -Wextra -fsanitize=address -I/usr/include -IMiniLibX -O2 -include "header/principal.h" -c $< -o $@
 
 clean :
 	rm -f ${OBJ}

@@ -55,8 +55,8 @@ void	init_move_enem(t_move *move, int x, int y)
 	move->accel_x  = rand() % 7 + 5;
 	move->begin_speed_x = move->accel_x * (rand() % 2 * 2 - 1);
 	move->begin_speed_y = 0;
-	move->begin_x = x * 128;
-	move->begin_y = y * 128;
+	move->begin_x = x * 128 + 32;
+	move->begin_y = y * 128 + 70;
 	move->old_x = move->x;
 	move->old_y = move->y;
 }

@@ -55,7 +55,7 @@ int	this_is_enemy(char **tab, int x, int y)
 
 void	drop_char(char **tab, int *x, int *y)
 {
-	get_first_pos(x, y, tab);
+	get_first_pos(x, y, tab, 'P');
 	while (tab[(*y) + 1][*x] != '1')
 		(*y)++;
 }

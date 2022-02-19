@@ -1,6 +1,7 @@
 void	edit_next_frame(t_vars *vars, t_data *new)
 {
 	update_objects(vars->objects, &vars->assets.hit_map, vars->keys, &vars->assets);	
+	check_end(vars);
 	display_objects(vars->objects, new, vars->keys, vars->assets.nb_objects);
 	restore_map(new, vars->objects, &vars->assets.map, vars->assets.nb_objects);
 	if (vars->keys[4] && !vars->dis_hit[vars->nloaded])
@@ -30,7 +31,7 @@ int	render_next_frame(t_vars *vars)
 	cadre_frame(&x, &y, vars->objects, vars->world);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->world[vars->nloaded].img, x, y);
 	vars->nloaded = 1 - vars->nloaded;
-	clean_world(vars->world + vars->nloaded, vars->objects, &vars->assets.map, vars->assets.nb_objects);
+	clean_world(vars->world + vars->nloaded, vars->objects, &vars->assets);
 	vars->rendering = 0;
 	//time_disp(time_diff(current_time(), past));
 	return (0);	
@@ -69,8 +70,10 @@ void	init_world(t_vars *vars)
 {
 	vars->world[0] = new_image(vars->mlx, vars->assets.map.x, vars->assets.map.y);
 	vars->world[1] = new_image(vars->mlx, vars->assets.map.x, vars->assets.map.y);
-	paint_background(vars->world, 0x00505050 );
-	paint_background(vars->world + 1, 0x00505050 );
+	put_tile(&vars->assets.background, vars->world, 0, 0);
+	put_tile(&vars->assets.background, vars->world + 1, 0, 0);
+	//paint_background(vars->world, 0x00505050 );
+	//paint_background(vars->world + 1, 0x00505050 );
 	display_objects(vars->objects, vars->world, vars->keys, vars->assets.nb_objects);
 	display_objects(vars->objects, vars->world + 1, vars->keys, vars->assets.nb_objects);
 	put_tile(&vars->assets.map, vars->world, 0, 0);	

@@ -9,15 +9,21 @@ int	init_objects(t_assets *assets, t_object **objects, void *mlx)
 		free(*objects);
 		return (1);
 	}
-	if (init_collectibles(assets->tab, *objects + 1, mlx))
+	if (init_portal(*objects + 1, assets->tab, mlx))
 	{
 		free_object(*objects, NB_CHAR_ANIME, mlx);
 		free(*objects);
 		return (1);
 	}
-	if (init_enemies(assets->tab, *objects + assets->nb_coll + 1, mlx))
+	if (init_collectibles(assets->tab, *objects + 2, mlx))
 	{
 		free_object(*objects, NB_CHAR_ANIME, mlx);
+		free_object(*objects + 1, 1, mlx);
+		free(*objects);
+		return (1);
+	}
+	if (init_enemies(assets->tab, *objects + assets->nb_coll + 2, mlx))
+	{
 		(*objects)[1 + assets->nb_coll].animes = (void *) 0;
 		free_objects(*objects, mlx);
 		free(*objects);
@@ -92,7 +98,7 @@ void	invert_frame(t_data *frame)
 		i++;
 	}
 }*/
-
+/*
 void	display_objects(t_object *objects, t_data *world, int *keys, int i)
 {
 	i--;
@@ -112,4 +118,34 @@ void	display_objects(t_object *objects, t_data *world, int *keys, int i)
 		}
 		i--;
 	}
+}
+*/
+
+void	display_objects(t_object *objects, t_data *world, int *keys, int i)
+{
+	i--;
+	while (i >= 2)
+	{
+		display_one_object(objects + i, world, keys);
+		i--;
+	}
+	display_one_object(objects, world, keys);
+	display_one_object(objects + 1, world, keys);
+}
+
+void	display_one_object(t_object *object, t_data *world, int *keys)
+{
+		if (!object->mirror)
+		{
+			put_tile(object->img, world, object->x, object->y);
+			if (keys[4])
+				put_tile(&object->hit, world, object->x, object->y);
+		}
+		else
+		{
+			put_inverted_tile(object->img, world, object->x, object->y);
+			if (keys[4])
+				put_inverted_tile(&object->hit, world, object->x, object->y);
+		}
+
 }

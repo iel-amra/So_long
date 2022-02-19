@@ -2,6 +2,8 @@ void	update_character(t_object *chara, t_assets *assets, int *keys, t_object *en
 {
 	int	i;
 
+	if (chara->finished || (assets->collected == assets->nb_coll && center_coll(chara, chara + 1)))
+		return update_finished_char(chara);
 	if (keys[1])
 		chara->mirror = 1;
 	if (keys[3])
@@ -14,7 +16,10 @@ void	update_character(t_object *chara, t_assets *assets, int *keys, t_object *en
 	while (i < assets->nb_enemies)
 	{
 		if (pixel_coll(enem + i, chara))
+		{
 			chara->alive = 0;
+			assets->collected = 0;
+		}
 		i++;
 	}
 }
@@ -31,7 +36,7 @@ void	update_normal_char(t_object *object, t_data *hit_map, int *keys)
 	{
 		load_anime(object, 1, 0);
 		if (keys[1] && move->speed_x > -MAX_SPEED)
-			move->speed_x -= AIR_SPEED;
+			move->speed_x += -AIR_SPEED;
 		if (keys[3] && move->speed_x < MAX_SPEED)
 			move->speed_x += AIR_SPEED;
 	}
@@ -72,4 +77,17 @@ void	update_fly_char(t_object *object, int *keys)
 		move->speed_y -= FLY_SPEED;
 	if (keys[2])
 		move->speed_y += FLY_SPEED;
+}
+
+void	update_finished_char(t_object *chara)
+{
+	if (!chara->finished)
+	{
+		paint_background(&chara->hit, 0xFF000000);
+		chara->move->speed_y = 0;
+	}
+	chara->finished = 1;
+	load_anime(chara, 1, 0);
+	chara->move->speed_x = 0;
+	chara->move->speed_y -= 0.2;
 }

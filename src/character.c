@@ -20,31 +20,34 @@ int	create_character(t_assets *assets, t_object *chara, void *mlx)
 	draw_empty_rectangle(&chara->hit, cutter, 0x000000FF);
 	create_char_move(chara, assets->tab);
 	chara->mirror = 0;
+	chara->finished = 0;
 	return (0);
 }
 
 void	create_char_move(t_object *chara, char **tab)
 {
-	get_first_pos(&chara->move->begin_x, &chara->move->begin_y, tab);
+	get_first_pos(&chara->move->begin_x, &chara->move->begin_y, tab, 'P');
 	chara->move->begin_x = chara->move->begin_x * 128 - 50;
 	chara->move->begin_y = chara->move->begin_y * 128 - 50;
 	chara->move->old_x = chara->move->begin_x;
 	chara->move->old_y = chara->move->begin_y;
 	chara->move->begin_speed_x = 0;
 	chara->move->begin_speed_y = 0;
+	chara->move->center_x = chara->move->begin_x * 128 - 50 + 64;
+	chara->move->center_y = chara->move->begin_y * 128 - 50 + 64;
 }
 
-void	get_first_pos(int *x, int *y, char **tab)
+void	get_first_pos(int *x, int *y, char **tab, char c)
 {
 	*y = 0;
 	*x = 0;
 
-	while (tab[*y] && tab[*y][*x] != 'P')
+	while (tab[*y] && tab[*y][*x] != c)
 	{
 		*x = 0;
-		while (tab[*y][*x] && tab[*y][*x] != 'P')
+		while (tab[*y][*x] && tab[*y][*x] != c)
 			(*x)++;
-		if (tab[*y][*x] != 'P')
+		if (tab[*y][*x] != c)
 		(*y)++;
 	}
 }

@@ -1,19 +1,23 @@
-void	update_colls(t_object *colls, int i, t_object *chara)
+void	update_colls(t_object *colls, int i, t_object *chara, t_assets *assets)
 {
 	i--;
 	while (i >= 0)
 	{
-		update_one_coll(colls + i, chara);
+		update_one_coll(colls + i, chara, assets);
 		i--;
 	}
 }
 
-void	update_one_coll(t_object *coll, t_object *chara)
+void	update_one_coll(t_object *coll, t_object *chara, t_assets *assets)
 {
 	t_move	*move;
 
 	if (pixel_coll(coll, chara))
+	{
+		if (coll->alive)
+			assets->collected++;
 		coll->alive = 0;
+	}
 	move = coll->move;
 	if (coll->alive)
 	{

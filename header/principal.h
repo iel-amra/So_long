@@ -17,7 +17,7 @@
 #define MAX_SPEED 10
 #define GRAVITY 0.8
 #define JUMP_POWER 17
-#define AIR_SPEED 0.5
+#define AIR_SPEED 0.8
 #define FLY_SPEED 0.2
 #define	DEFAULT_WAIT 5
 
@@ -82,6 +82,7 @@ typedef struct	s_object{
 	t_cutter	cutter;
 	int			mirror;
 	int			alive;
+	int			finished;
 }	t_object;
 
 typedef struct	s_assets {
@@ -89,9 +90,11 @@ typedef struct	s_assets {
 	t_data			tileset[7][7];
 	t_data			map;
 	t_data			hit_map;
+	t_data			background;
 	char			**tab;
 	unsigned char	**coder;
 	int				nb_coll;
+	int				collected;
 	int				nb_enemies;
 	int				nb_objects;
 }	t_assets;
@@ -108,20 +111,20 @@ typedef struct		s_vars {
 	t_assets	assets;
 	t_object	*objects;
 }	t_vars;
-
-
 int				init_assets(t_assets *assets, void *mlx);
 int				init_tileset(t_data tileset[7][7], void *mlx);
 t_data			get_tile(void *mlx, t_data *img, t_cutter my_cutter);
 void			put_tile(t_data *tile, t_data *img, int x, int y);
 void			put_inverted_tile(t_data *tile, t_data *img, int x, int y);
+int				get_background(t_data *background, void *mlx);
+t_data			get_background_tile(void *mlx);
 void			cadre_frame(int *x, int *y, t_object *chara, t_data *world);
 int				create_character(t_assets *assets, t_object *chara, void *mlx);
 void			create_char_move(t_object *chara, char **tab);
-void			get_first_pos(int *x, int *y, char **tab);
+void			get_first_pos(int *x, int *y, char **tab, char c);
 t_anime			*init_chara_animes(void *mlx);
 int				init_char_one_anime(int i, t_anime *anime, void *mlx);
-void			clean_world(t_data *world, t_object *objects, t_data *map, int nb_obj);
+void			clean_world(t_data *world, t_object *objects, t_assets *assets);
 void			clean_background(t_data *world, t_cutter cutter, int color);
 void			restore_map(t_data *world, t_object *objects, t_data *map, int nb_obj);
 void			local_restore(t_data *world, t_cutter cutter, t_data *map);
@@ -131,6 +134,11 @@ t_anime			*init_coll_anime(void *mlx);
 int				init_multi_coll(t_object *coll, int y, int x, void *mlx);
 int				init_one_coll(t_object *coll, int y, int x, void *mlx);
 void			init_move_coll(t_move	*move, int x, int y);
+void			check_end(t_vars *vars);
+int				center_coll(t_object *object, t_object *portal);
+int				center_coll_hori(t_object *object, t_object *portal);
+int				center_coll_verti(t_object *object, t_object *portal);
+int				in_portal(t_object *chara, t_object *portal);
 int init_enemies(char **tab, t_object *objects, void *mlx);
 int				init_one_enemy(t_object *enem, int y, int x, void *mlx);
 void			init_move_enem(t_move *move, int x, int y);
@@ -174,9 +182,15 @@ t_data			*load_frames(char *path,  int nb_frames, void *mlx);
 int				load_one_frame(t_data *frame, char *path, int i, void *mlx);
 void			invert_frame(t_data *frame);
 void			display_objects(t_object *objects, t_data *world, int *keys, int i);
+void			display_objects(t_object *objects, t_data *world, int *keys, int i);
+void			display_one_object(t_object *object, t_data *world, int *keys);
 int place_enemies(char **tab);
 int				this_is_enemy(char **tab, int x, int y);
 void			drop_char(char **tab, int *x, int *y);
+int				init_portal(t_object *portal, char **tab, void *mlx);
+t_anime			*portal_anime(void *mlx);
+t_data			*cut_tiles_frame(t_cutter cutter, void *mlx, char *path);
+void			cutted_tiles(t_cutter cutter, t_data *all_frames, t_data *frames, void *mlx);
 int				count_reader(char *path);
 char			*full_reader(char *path);
 char			**reader(char *path);
@@ -192,8 +206,9 @@ void			update_character(t_object *chara, t_assets *assets, int *keys, t_object *
 void			update_normal_char(t_object *object, t_data *hit_map, int *keys);
 void			update_ground_char(t_object *object, t_move *move, int *keys);
 void			update_fly_char(t_object *object, int *keys);
-void			update_colls(t_object *colls, int i, t_object *chara);
-void			update_one_coll(t_object *coll, t_object *chara);
+void			update_finished_char(t_object *chara);
+void			update_colls(t_object *colls, int i, t_object *chara, t_assets *assets);
+void			update_one_coll(t_object *coll, t_object *chara, t_assets *assets);
 int				pixel_coll(t_object *small, t_object *big);
 void			update_enemies(t_object *enemies, int i, t_data *hit_map);
 void			update_one_enemy(t_object *enemy, t_data *hit_map);

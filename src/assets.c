@@ -19,14 +19,23 @@ int	init_assets(t_assets *assets, void *mlx)
 	init_hit_map(assets, mlx);
 	assets->nb_coll = nb_collectibles(assets->tab);
 	assets->nb_enemies = place_enemies(assets->tab);
-	assets->nb_objects = 1 + assets->nb_coll + assets->nb_enemies;
+	assets->nb_objects = 2 + assets->nb_coll + assets->nb_enemies;
+	assets->collected = 0;
+	assets->background = new_image(mlx, assets->map.x, assets->map.y);
+	if (get_background(&assets->background, mlx))
+	{
+		free_tileset(assets->tileset, mlx);
+		double_free(assets->coder);
+		double_free(assets->tab);
+		return (1);
+	}
 	return (0);
 }
 
 int	init_tileset(t_data tileset[7][7], void *mlx)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 	t_data		tileset_img;
 	t_cutter	my_cutter;
 

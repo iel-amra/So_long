@@ -1,10 +1,10 @@
-void	clean_world(t_data *world, t_object *objects, t_data *map, int nb_obj)
+void	clean_world(t_data *world, t_object *objects, t_assets *assets)
 {
 	int		i;
 	t_cutter	cutter;
 
 	i = 0;
-	while (i < nb_obj)
+	while (i < assets->nb_objects)
 	{
 		if (objects[i].move)
 			cutter = new_cutter(objects[i].move->old_x, objects[i].move->old_y, 
@@ -12,8 +12,9 @@ void	clean_world(t_data *world, t_object *objects, t_data *map, int nb_obj)
 		else 
 			cutter = new_cutter(objects[i].x, objects[i].y, 
 				objects[i].img->x, objects[i].img->y);
-		clean_background(world, cutter, 0x00505050);
-		local_restore(world, cutter, map);
+		//clean_background(world, cutter, 0x00505050);
+		local_restore(world, cutter, &assets->background);
+		local_restore(world, cutter, &assets->map);
 		i++;
 	}
 }

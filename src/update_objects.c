@@ -2,9 +2,9 @@ void	update_objects(t_object *objects, t_data *hit_map, int *keys, t_assets *ass
 {
 	int	i;
 
-	update_character(objects, assets, keys, objects + assets->nb_coll + 1);
-	update_colls(objects + 1, assets->nb_coll, objects);
-	update_enemies(objects + assets->nb_coll + 1, assets->nb_enemies, hit_map);
+	update_character(objects, assets, keys, objects + assets->nb_coll + 2);
+	update_colls(objects + 2, assets->nb_coll, objects, assets);
+	update_enemies(objects + assets->nb_coll + 2, assets->nb_enemies, hit_map);
 	i = assets->nb_objects - 1;
 	while (i >= 0)
 	{
@@ -12,7 +12,7 @@ void	update_objects(t_object *objects, t_data *hit_map, int *keys, t_assets *ass
 			move_objects(objects + i, hit_map);
 		else
 			reset_one_object(objects + i);
-			anime_objects(objects + i);
+		anime_objects(objects + i);
 		i--;
 	}
 }
