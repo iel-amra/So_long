@@ -1,3 +1,4 @@
+/*
 t_time	current_time()
 {
 	t_time	now;
@@ -42,4 +43,4 @@ t_time	time_add(t_time time1, t_time time2)
 void	time_disp(t_time time)
 {
 	printf("%li,%06i\n", time.tv_sec, time.tv_usec);
-}
+}*/

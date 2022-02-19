@@ -10,13 +10,13 @@ LIBFT = libft/libft.a
 all : checkLibft ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT}
-	gcc -Wall -Werror -Wextra -fsanitize=address ${OBJ}  ${LIBFT} -LMiniLibX -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+	gcc $(OBJ) ${LIBFT} -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)	
 
 checkLibft :
 	make -C libft
 
 ${OBJ_FILE}/%.o : ${SRC_FILE}/%.c ${HEADER}
-	gcc -Wall -Werror -Wextra -fsanitize=address -I/usr/include -IMiniLibX -O2 -include "header/principal.h" -c $< -o $@
+	gcc -include "header/principal.h" -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O2 -c $< -o $@
 
 clean :
 	rm -f ${OBJ}

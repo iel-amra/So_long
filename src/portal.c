@@ -24,12 +24,12 @@ int	init_portal(t_object *portal, char **tab, void *mlx)
 t_anime	*portal_anime(void *mlx)
 {
 	t_anime		*anime;
-	t_cutter	cutter;
+	//t_cutter	cutter;
 
 	anime = malloc(sizeof(*anime));
 	if (!anime)
 		return ((void *) 0);
-	cutter = new_cutter(480, 480, 5, 3); 
+	//cutter = new_cutter(480, 480, 5, 3); 
 	//anime->frames = cut_tiles_frame(cutter, mlx, "img/Pipoya VFX WarpPortal/480x480/pipo-gate01ba.xpm");
 	anime->frames = load_frames("img/Plant Animations/Plant 8 Poison/PlantPosion_", 30, mlx);
 	if (!anime->frames)

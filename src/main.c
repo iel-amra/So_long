@@ -1,3 +1,5 @@
+
+
 void	edit_next_frame(t_vars *vars, t_data *new)
 {
 	update_objects(vars->objects, &vars->assets.hit_map, vars->keys, &vars->assets);	
@@ -34,6 +36,7 @@ int	render_next_frame(t_vars *vars)
 	clean_world(vars->world + vars->nloaded, vars->objects, &vars->assets);
 	vars->rendering = 0;
 	//time_disp(time_diff(current_time(), past));
+	usleep(6000);	
 	return (0);	
 }
 
@@ -96,7 +99,6 @@ int	main(int argc, char**argv)
 	mlx_hook(vars.win, 25, 1L<<18, close_prog, &vars);
 	mlx_hook(vars.win, 17, 1L<<17, close_prog, &vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
-	//mlx_expose_hook(vars.mlx, close_prog, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
