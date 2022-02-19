@@ -20,6 +20,7 @@
 #define AIR_SPEED 0.8
 #define FLY_SPEED 0.2
 #define	DEFAULT_WAIT 5
+#define WAIT_COEF 4
 
 #define MULTI_COLL 3
 #define SECURITY_LEN 3
@@ -146,13 +147,13 @@ t_anime			*init_enem_anime(void *mlx);
 int				close_prog(t_vars *vars);
 int				key_down(int keycode, t_vars *vars);
 int				key_up(int keycode, t_vars *vars);
-void			free_assets(void *mlx, t_assets *assets);
-void			free_tileset(t_data tileset[7][7], void *mlx);
-void			double_free(void *pointer);
 void			free_objects(t_object *objects, void *mlx);
 void			free_object(t_object *object, int nb_anime, void *mlx);
 void			free_animes(t_anime *animes, int nb, void *mlx);
 void			free_frames(t_data *frames, int nb, void *mlx);
+void			free_assets(void *mlx, t_assets *assets);
+void			free_tileset(t_data tileset[7][7], void *mlx);
+void			double_free(void *pointer);
 void			build_hit(t_data *hit, int i, int j);
 int				check_code(unsigned char code, int x, int y);
 void			add_hit_map(t_assets *assets, int x, int y, void *mlx);

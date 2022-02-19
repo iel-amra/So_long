@@ -14,7 +14,6 @@ int	close_prog(t_vars *vars)
 
 int	key_down(int keycode, t_vars *vars)
 {
-	printf("%i\n", keycode);
 	if (keycode == 119 || keycode == 65362)
 		vars->keys[0]++;
 	if (keycode == 97 || keycode == 65361)
