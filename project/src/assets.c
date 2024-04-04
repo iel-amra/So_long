@@ -3,7 +3,7 @@ int	init_assets(t_assets *assets, void *mlx)
 	assets->tab = reader(assets->path);
 	if (!assets->tab)
 		return (1);
-	assets->coder = (unsigned char **) reader("coder/tileset_code.txt");
+	assets->coder = (unsigned char **) reader("project/coder/tileset_code.txt");
 	if (!assets->coder)
 	{
 		double_free(assets->tab);
@@ -39,7 +39,7 @@ int	init_tileset(t_data tileset[7][7], void *mlx)
 	t_data		tileset_img;
 	t_cutter	my_cutter;
 
-	tileset_img = image_xpm(mlx, "./img/Mossy Tileset/Mossy - TileSet.xpm");
+	tileset_img = image_xpm(mlx, "./project/img/Mossy Tileset/Mossy - TileSet.xpm");
 	if (!tileset_img.img)
 		return (1);
 	my_cutter = new_cutter(0, 0, 128, 128);

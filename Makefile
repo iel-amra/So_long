@@ -1,29 +1,34 @@
 NAME = so_long
-SRC_FILE = src
-OBJ_FILE = obj
-HEADER_FILE = header
+SRC_FILE = project/src
+OBJ_FILE = project/obj
+HEADER_FILE = project/header
 SRC = $(wildcard ${SRC_FILE}/*.c)
 OBJ = $(SRC:${SRC_FILE}/%.c=${OBJ_FILE}/%.o)
 HEADER = $(wildcard ${HEADER_FILE}/*.h)
-LIBFT = libft/libft.a 
+LIBFT = project/libft/libft.a 
 
-all : checkLibft ${NAME}
+all : ${NAME}
 
-${NAME} : ${OBJ} ${LIBFT}
-	gcc $(OBJ) ${LIBFT} -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)	
+${NAME} : ${OBJ} FORCE
+	gcc $(OBJ) ${LIBFT} -Lproject/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)	
 
-checkLibft :
-	make -C libft
+FORCE :
+	make -C project/libft
 
-${OBJ_FILE}/%.o : ${SRC_FILE}/%.c ${HEADER}
-	gcc -include "header/principal.h" -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O2 -c $< -o $@
+${OBJ_FILE}/%.o : ${SRC_FILE}/%.c ${HEADER} | ${OBJ_FILE}
+	gcc -include "project/header/principal.h" -Wall -Wextra -Werror -I/usr/include -Iproject/mlx_linux -O2 -c $< -o $@
+
+${OBJ_FILE} :
+	mkdir ${OBJ_FILE}
 
 clean :
-	rm -f ${OBJ}
+	make -C project/libft clean 
+	rm -rf ${OBJ_FILE}
 
 fclean : clean
+	make -C project/libft fclean 
 	rm -f ${NAME}
 
 re : fclean ${NAME}
 
-.PHONY : clean fclean re checkLibft
+.PHONY : all clean fclean re FORCE

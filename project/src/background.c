@@ -26,10 +26,10 @@ t_data	get_background_tile(void *mlx)
 	t_data	fond;
 	t_data	ajout;
 
-	fond = image_xpm(mlx, "img/background/Nebula Blue.xpm");
+	fond = image_xpm(mlx, "project/img/background/Nebula Blue.xpm");
 	if (fond.img == (void *) 0)
 		return (fond);
-	ajout = image_xpm(mlx, "img/background/Stars Small_1.xpm");
+	ajout = image_xpm(mlx, "project/img/background/Stars Small_1.xpm");
 	if (ajout.img == (void *) 0)
 	{
 		mlx_destroy_image(mlx, fond.img);
@@ -37,7 +37,7 @@ t_data	get_background_tile(void *mlx)
 	}
 	put_tile(&ajout, &fond, 0, 0);
 	mlx_destroy_image(mlx, ajout.img);
-	ajout = image_xpm(mlx, "img/background/Stars-Big_1_2_PC.xpm");
+	ajout = image_xpm(mlx, "project/img/background/Stars-Big_1_2_PC.xpm");
 	if (ajout.img == (void *) 0)
 	{
 		mlx_destroy_image(mlx, fond.img);

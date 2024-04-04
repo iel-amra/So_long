@@ -51,7 +51,7 @@ t_anime	*init_coll_anime(void *mlx)
 	anime = malloc(sizeof(*anime));
 	if (!anime)
 		return ((void *) 0);
-	anime->frames = load_frames("img/Potion/Health Potion ", 6, mlx);
+	anime->frames = load_frames("project/img/Potion/Health Potion ", 6, mlx);
 	if (!anime->frames)
 	{
 		free(anime);

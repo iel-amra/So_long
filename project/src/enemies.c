@@ -68,7 +68,7 @@ t_anime	*init_enem_anime(void *mlx)
 	anime = malloc(sizeof(*anime));
 	if (!anime)
 		return ((void *) 0);
-	anime->frames = load_frames("img/SlimeGreen/SlimeBasic_", 30, mlx);
+	anime->frames = load_frames("project/img/SlimeGreen/SlimeBasic_", 30, mlx);
 	if (!anime->frames)
 	{
 		free(anime);
