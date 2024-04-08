@@ -27,7 +27,7 @@
     <img src="https://github.com/iel-amra/So_long/blob/main/img/So_long.png?raw=true" alt="Logo" width="400" height="400">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">So Long - The game</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
