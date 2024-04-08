@@ -49,7 +49,7 @@ The game is purposely designed to be hard and frustrating.
 
 It's possible to create custom maps by creating a file with a .ber extension (see below)
 
-Since the subject only allowed Minilibx, all the physices and frame management is manually implemented. The collisions, animation and map building is manually implemented, as well as optimizing the physics and display so the game can be rendered using the processor only, on one core (Imposed by the subject).
+Since the subject only allowed Minilibx, all the physices and frame management is manually implemented. The collisions, animations and map building are manually implemented.The physics and display aer optimized so the game can be rendered using the processor only, on one core (Imposed by the subject).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
