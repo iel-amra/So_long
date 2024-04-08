@@ -39,7 +39,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-So long is a 2D platformer developed with a library called Minilibx.
+So long is a 2D platformer developed for linux with a library called Minilibx.
 
 The goal of the game is to pick up all the potions before exiting through the plant.
 
@@ -50,23 +50,6 @@ The game is purposely designed to be hard and frustrating.
 It's possible to create custom maps by creating a file with a .ber extension (see below)
 
 Since the subject only allowed Minilibx, all the physices and frame management is manually implemented. The collisions, animations and map building are manually implemented.The physics and display aer optimized so the game can be rendered using the processor only, on one core (Imposed by the subject).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
