@@ -39,20 +39,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-So long is a 2D platformer developed with a library called Minilibx, taht only allows putting pixels to an image and reading .png or .xpm files. The game engine needed to be implemented manually.
+So long is a 2D platformer developed with a library called Minilibx.
 
 The goal of the game is to pick up all the potions before exiting through the plant.
 
 ![Product Name Screen Shot][product-screenshot]
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+The game is purposely designed to be hard and frustrating, and is optimized to run only on the processor (that was a subject requirement)
+It's possible to create custom maps by creating a file with a .ber extension (see below)
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+Since the subject only allowed Minilibx, all the physices and frame management is manually implemented. The collisions, animation and map building is manually implemented, as well as optimizing the physics and display so the game can be rendered using the processor only, on one core (Imposed by the subject).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
