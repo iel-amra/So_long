@@ -72,18 +72,17 @@ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-d
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone git@github.com:iel-amra/So_long.git
    ```
-3. Install NPM packages
-   ```sh
-   npm install
+3. Enter the repository
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   cd So_long
+   ```
+4. Compile the sources
+   ```
+   make
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
