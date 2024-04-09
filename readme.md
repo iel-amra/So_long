@@ -76,7 +76,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone git@github.com:iel-amra/So_long.git
    ```
-3. Enter the repository
+3. Enter the So_long folder
    ```
    cd So_long
    ```
