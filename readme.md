@@ -74,14 +74,12 @@ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-d
    ```sh
    git clone git@github.com:iel-amra/So_long.git
    ```
-2. Enter the So_long folder
+2. Enter the So_long folder and compile
    ```
-   cd So_long
+   cd So_long && make
    ```
-3. Compile the sources
-   ```
-   make
-   ```
+
+That's it ! So_long is now installed on your machine.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,27 +107,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Ihab El amrani - [Linkedin](www.linkedin.com/in/ihab-el-amrani) - iel-amra@student.42lyon.fr
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/iel-amra/So_long](https://github.com/iel-amra/So_long)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+My github : [https://github.com/iel-amra](https://github.com/iel-amra)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
