@@ -58,7 +58,7 @@ Since the subject only allowed Minilibx, all the physices and frame management i
 <!-- GETTING STARTED -->
 ## Getting Started
 
-So_long was developed on ubuntu but should work well on other debian based distribution
+So_long was developed and tested only on ubuntu, but should work well on other debian based distribution
 
 ### Prerequisites
 
@@ -70,17 +70,15 @@ sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-d
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
 1. Clone the repo
    ```sh
    git clone git@github.com:iel-amra/So_long.git
    ```
-3. Enter the So_long folder
+2. Enter the So_long folder
    ```
    cd So_long
    ```
-4. Compile the sources
+3. Compile the sources
    ```
    make
    ```
