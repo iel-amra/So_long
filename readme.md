@@ -98,9 +98,18 @@ You can launch any map you want with the following syntax :
 ./so_long [map_name].ber
 ```
 
-For example to 
+Keys :
+* Deplacement : W,A,S,D or the arrow keys
+* Exit the game : Escape
+* Activate the fly cheat : V
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+## Map creation
+
+To create a map, create a file with a .ber extension
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
