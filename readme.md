@@ -127,7 +127,7 @@ For example the following file :
 ```
 Gives the following map :
 
-![Map Example][map-screenshot]
+<img src="https://github.com/iel-amra/So_long/blob/main/img/screenshot_map.png?raw=true" alt="map-screenshot" width="200"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
