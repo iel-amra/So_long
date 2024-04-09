@@ -88,20 +88,22 @@ That's it ! So_long is now installed on your machine.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To start the first map of the game, enter the following command in your terminal :
+```
+./so_long map/map1.ber
+```
+
+You can launch any map you want with the following syntax :
+```
+./so_long [map_name].ber
+```
+
+For example to 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
