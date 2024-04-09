@@ -120,10 +120,11 @@ The map needs to be a rectangle, else the game won't start.
 
 For example the following file :
 
+```
 1111111
 1P0C0E1
 1111111
-
+```
 Gives the following map :
 
 ![Map Example][map-screenshot]
