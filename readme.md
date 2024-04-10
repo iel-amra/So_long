@@ -47,7 +47,7 @@ The goal of the game is to pick up all the potions before exiting through the pl
 
 The game is purposely designed to be hard and frustrating.
 
-It's possible to create custom maps by creating a file with a .ber extension (see below)
+It's possible to build custom maps by creating a file with a .ber extension (see below)
 
 Since the subject only allowed Minilibx, all the physices and frame management is manually implemented. The collisions, animations and map building are manually implemented. The physics and display are optimized so the game can be rendered using the processor only, on one core (Imposed by the subject).
 
@@ -109,7 +109,7 @@ Keys :
 
 ## Map creation
 
-To create a map, create a file with a .ber extension and fill it with the following characters :
+To build a map, create a file with a .ber extension and fill it with the following characters :
 - 0 : Air
 - 1 : Walls, Floor and Ceiling
 - P : Player starting position (Only 1)
@@ -149,6 +149,6 @@ My github : [https://github.com/iel-amra](https://github.com/iel-amra)
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: www.linkedin.com/in/ihab-el-amrani
+[linkedin-url]: https://www.linkedin.com/in/ihab-el-amrani
 [product-screenshot]: https://github.com/iel-amra/So_long/blob/main/img/screenshot.png?raw=true
 [map-screenshot]: https://github.com/iel-amra/So_long/blob/main/img/screenshot_map.png?raw=true
